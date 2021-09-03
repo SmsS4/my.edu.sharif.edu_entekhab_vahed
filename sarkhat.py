@@ -2,32 +2,46 @@ import time
 
 import requests
 from datetime import datetime
-AUTH = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHVkZW50SWQiOiI5NzExMDE0NCIsImNyZWF0ZWRBdCI6MTYxMjMyODUzMTIwNiwic3VwZXJVc2VyIjpmYWxzZSwiaWF0IjoxNjEyMzI4NTMxfQ.cYWiXuO9PPSvF_mkmrW9DuW9wyI2sk3qX9CkCHBdSBs"
-RAND = 9
+
+AUTH = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHVkZW50SWQiOiI5NzExMDE0NCIsImNyZWF0ZWRBdCI6MTYzMDY2MDQ4ODc1Miwic3VwZXJVc2VyIjpmYWxzZSwiaWF0IjoxNjMwNjYwNDg4fQ.q5sHBEYhQR3N0XeGDpXiRCFN2HbwyC-UDEAHh-YnNbA"
+RAND = 11
 # List of (course_id, units)
 COURSES = [
-    ("40418-1", 3),  # Tahlil system
-    ("40634-1", 3),  # Shabih sazi
-    ("40429-1", 3),  # Mobile
-    ("40415-1", 3),  # Nzarayi zaban
-    ("37123-2", 2),  # Akhlagh
-    ("37123-4", 2),  # Akhlagh
-    ("37127-2", 2),  # Ayin
-    ("40203-6", 1),  # DSD
-    ("40203-5", 1),  # DSD
-    ("40203-1", 1),  # DSD
-    ("30004-18", 1),  # ٰVarzesh
-    ("30004-11", 1),  # ٰVarzesh
+    ("40324-1", 3),  # ‌بازیابی
+
+    ("40364-1", 3),  # ‌طراحی زبان
+    ("40717-2", 3),  # یادگیری ماشین
+
+    ("40456-1", 3),  # نظریه بازی
+    ("40494-1", 3),  # بیو
+
+    ("40419-1", 3),  # وب
+    ("40462-1", 3),  # نهفته
+
+    ("40474-1", 3),  # مهندسی نرم‌افزار
+
+    ("37446-8", 2),  # ابوالحسینی
+    ("37447-4", 2),  # طباطبائی
+    ("37447-2", 2),  # یحیی صباغچی فیروز آباد
+    ("37446-4", 2),  # فیضی
+    ("37446-2", 2),  # فیضی
+    ("37446-6", 2),  # صباغچی
+
+
+    # ("40424-1", 3),  # ok
 ]
 
 while datetime.now().hour != RAND:
-    break
+    # break
     time.sleep(0.00001)
     continue
+time.sleep(0.1)
 for course in COURSES:
     print(course)
-    while True:
-        print(course, AUTH)
+    cnt = 0
+    while cnt < 5:
+        cnt += 1
+        print('try')
         result = requests.post(
             url="https://my.edu.sharif.edu/api/reg",
             headers={
@@ -62,4 +76,4 @@ for course in COURSES:
             time.sleep(1)
             continue
         break
-    exit(0)
+    # exit(0)
